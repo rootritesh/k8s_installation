@@ -36,6 +36,7 @@ kubectl create -f custom-resources.yaml
 kubectl get pods -n calico-system (Wait till all pods in running state)
 kubectl get nodes
 
+======================================================================================================================================================================
 
 #Nodes
 
