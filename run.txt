@@ -1,3 +1,6 @@
+#AWS
+Launch 2 t2.micro instance with all ports open in security groups
+
 #Master Node
 
 #Login to root user
