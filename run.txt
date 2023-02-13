@@ -6,15 +6,21 @@ Login with ec2-user
 
 #Login to root user
 sudo su -- root
-sudo apt update && apt install docker.io -y
+sudo yum update && yum install docker -y
 
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
-sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo '''
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+''' > /etc/yum.repos.d/kubernetes.repo
 
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+yum install docker kubelet kubeadm kubectl iproute-tc -y 
+systemctl enable --now docker
+systemctl enable --now kubelet
 
 echo '''
 {
@@ -43,15 +49,21 @@ kubectl get nodes
 
 #Login to root user
 sudo su -- root
-sudo apt update && apt install docker.io -y
+sudo yum update && yum install docker -y
 
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
-sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo '''
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+''' > /etc/yum.repos.d/kubernetes.repo
 
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+yum install docker kubelet kubeadm kubectl iproute-tc -y 
+systemctl enable --now docker
+systemctl enable --now kubelet
 
 echo '''
 {
