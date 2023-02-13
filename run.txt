@@ -1,5 +1,5 @@
 #AWS
-Launch 2 t2.micro instance with all ports open in security groups
+Launch 2 t2.micro instance with all ports open in security groups AMI(Amazon AMI)
 
 #Master Node
 
