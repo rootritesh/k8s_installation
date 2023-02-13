@@ -1,5 +1,6 @@
 #AWS
 Launch 2 t2.micro instance with all ports open in security groups AMI(Amazon AMI)
+Login with ec2-user
 
 #Master Node
 
