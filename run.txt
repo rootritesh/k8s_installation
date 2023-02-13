@@ -23,6 +23,12 @@ systemctl enable --now docker
 systemctl enable --now kubelet
 
 echo '''
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+''' > /etc/sysctl.d/k8s.conf
+sysctl --system
+
+echo '''
 {
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
@@ -71,7 +77,11 @@ echo '''
 }
 ''' > /etc/docker/daemon.json
 sudo systemctl restart docker
-
+echo '''
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+''' > /etc/sysctl.d/k8s.conf
+sysctl --system
 
 kubectl join .....
 
